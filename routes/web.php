@@ -1,18 +1,21 @@
 <?php
 
+use App\Models\aa;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/a', function () {
+return view('create');
+});
+Route::post('/b', function (Request $request) {
+//dd( $request->input('name'));
+    $d = new aa();
+    $d->name = $request->input('name');
+    $d->description = "lorem";
+    $d->save();
+});
+Route::get('/list','App\Http\Controllers\TicketController@list');
+Route::get('/view/{id}','App\Http\Controllers\TicketController@viewOne');
