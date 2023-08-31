@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,18 +12,23 @@ class TicketController extends Controller
 
 
     public function make(){
-
+$ticket = new Ticket();
+$ticket->name="ooooooooooooooooo";
+$ticket->description="ooooooooooooooooo";
+$ticket->success=0;
+$ticket->save();
+        return redirect()->route('list');
     }
 
 
     public function list(){
-        $list =  DB::table('flights')->select('id','name','description','border')->get();
+        $list =  DB::table('tickets')->select('id','name','description','deadline')->get();
 return view('list')->with('list',$list);
 
     }
 
     public function viewOne(int $id){
-        $taks =  DB::table('flights')->select('id','name','description','border')->where('id',$id)->first();
+        $taks =  DB::table('tickets')->select('id','name','description','deadline')->where('id',$id)->first();
         if($taks==null){
             //print '<h1>Nincs ilyen</h1>';
             throw new \Exception('not found task');

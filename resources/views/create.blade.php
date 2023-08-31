@@ -1,20 +1,12 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Document</title>
-</head>
-<body>
-<div>div tartalom</div>
+@extends('master')
+@section('content')
 <div>
-    <form action="b" method="post" >
+    <form action="create" method="post" >
 
         <input name="name">
+        <input name="desc">
+<button>save</button>
+
     </form>
 </div>
-</body>
-</html>
+@endsection

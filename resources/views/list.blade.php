@@ -15,7 +15,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Border</th>
+            <th>deadline</th>
         </tr>
 
         </thead>
@@ -30,7 +30,7 @@
                 <td>{{ $value->name }}</td>
 
                 <td>{{ $value->description }}</td>
-                <td>{{ $value->border }}</td>
+                <td>{{ $value->deadline }}</td>
 
             </tr>
 
