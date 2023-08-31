@@ -42,7 +42,7 @@
                 </tbody>
 
             </table>
-
+            <a href="/create" class="btn btn-primary">Új bejegyzés</a>
         </div>
     </div>
 </div>

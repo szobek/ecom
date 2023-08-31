@@ -15,3 +15,6 @@ return view('create');
 Route::post('/create', 'App\Http\Controllers\TicketController@make');
 Route::get('/list','App\Http\Controllers\TicketController@list')->name('list');
 Route::get('/view/{id}','App\Http\Controllers\TicketController@viewOne');
+Route::fallback(function () {
+   return view('404');
+});
