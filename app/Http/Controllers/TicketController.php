@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,15 +10,19 @@ class TicketController extends Controller
 {
 
     private $dt;
+    private $minh=8;
+    private $maxh=22;
 
     public function make(Request $request)
     {
-        $dt = date('H');
-        if ($dt < 8 && $dt < 17) {
+        $this->dt = intval( date('H'));
+        //dd($this->dt > $this->minh && $this->dt < $this->maxh);
+        if ($this->dt > $this->minh && $this->dt < $this->maxh) {
             $ticket = new Ticket();
             $ticket->name = $request->input('name');
             $ticket->description = $request->input('desc');
             $ticket->success = 0;
+            $ticket->deadline="2023-09-04 15:55";
             $ticket->save();
             return redirect()->route('list');
 
@@ -34,8 +37,8 @@ class TicketController extends Controller
     {
 
         $dt = date('H');
-        $list = DB::table('tickets')->select('id', 'name', 'description', 'deadline')->get();
-        return view('list')->with('list', $list)->with('dt', $dt);
+        $list = DB::table('tickets')->select('id', 'name', 'description', 'deadline')->where('success',0)->get();
+        return view('list')->with(['list' => $list, 'dt' => $dt]);
 
     }
 
@@ -43,7 +46,7 @@ class TicketController extends Controller
     {
         $taks = DB::table('tickets')->select('id', 'name', 'description', 'deadline')->where('id', $id)->first();
         if ($taks == null) {
-            //print '<h1>Nincs ilyen</h1>';
+
             throw new \Exception('not found task');
         } else {
 
