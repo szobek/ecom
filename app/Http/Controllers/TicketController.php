@@ -11,10 +11,10 @@ class TicketController extends Controller
 {
 
 
-    public function make(){
+    public function make(Request $request){
 $ticket = new Ticket();
-$ticket->name="ooooooooooooooooo";
-$ticket->description="ooooooooooooooooo";
+$ticket->name=$request->input('name');
+$ticket->description=$request->input('desc');
 $ticket->success=0;
 $ticket->save();
         return redirect()->route('list');
