@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\DB;
 class TicketController extends Controller
 {
 
+    private $dt;
 
     public function make(Request $request){
+
 $ticket = new Ticket();
 $ticket->name=$request->input('name');
 $ticket->description=$request->input('desc');
@@ -22,8 +24,10 @@ $ticket->save();
 
 
     public function list(){
+
+        $dt = date('H');
         $list =  DB::table('tickets')->select('id','name','description','deadline')->get();
-return view('list')->with('list',$list);
+return view('list')->with('list',$list)->with('dt',$dt);
 
     }
 

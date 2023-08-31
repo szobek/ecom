@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-
+    <p>{{$dt}}</p>
     <h2 class="text-center">Tickets</h2>
 
 
