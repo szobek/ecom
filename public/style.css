@@ -10,3 +10,8 @@
 .not-create-container{
     background-color: lightcoral;
 }
+
+.task-success td{
+    color: #1a202c !important;
+    background-color: #ea6c80 !important;
+}

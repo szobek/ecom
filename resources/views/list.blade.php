@@ -26,7 +26,7 @@
                 <tbody>
                 @foreach($list as $value)
 
-                    <tr>
+                    <tr class="task-success">
 
                         <td>{{ $value->id }}</td>
 
@@ -42,7 +42,10 @@
                 </tbody>
 
             </table>
-            <a href="/create" class="btn btn-primary">Új bejegyzés</a>
+            <p class="d-flex justify-content-center">
+
+                <a href="/create" class="btn btn-primary">Új bejegyzés</a>
+            </p>
         </div>
     </div>
 </div>
