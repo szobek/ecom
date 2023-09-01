@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('/create', function () {
-$maxh = " 21:00";
+$maxh = " 20:00";
     $dayOfWeek = intval(date('w', strtotime(date('Y-m-d'))));
 
     $endOfWeek = ($dayOfWeek < 5) ?
@@ -21,7 +21,7 @@ $maxh = " 21:00";
     if ($now < $endOfWeek) {
         return view('create');
     } else {
-        print '<h1 >Nem lehet most felvinni (csak 8-17-ig. Most:' . date('H:i') . ') </h1><br>  <a href="/list">Tovább</a>';
+        return view('notCreate')->with('now', date('H:i'));
     }
 
 });
