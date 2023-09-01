@@ -26,11 +26,11 @@
                 <tbody>
                 @foreach($list as $value)
 
-                    <tr class="task-success">
+                    <tr class="task-unsuccess">
 
                         <td>{{ $value->id }}</td>
 
-                        <td>{{ $value->name }}</td>
+                        <td><a href="/view/{{ $value->id }}">{{ $value->name }}</a></td>
 
                         <td>{{ $value->description }}</td>
                         <td>{{ $value->deadline }}</td>

@@ -20,8 +20,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/list">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/list">list (not succeed)</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/listall">list (all)</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/create">New</a>
                 </li>

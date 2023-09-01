@@ -13,5 +13,9 @@
 
 .task-success td{
     color: #1a202c !important;
+    background-color: #c5eca5 !important;
+}
+.task-unsuccess td{
+    color: #1a202c !important;
     background-color: #ea6c80 !important;
 }

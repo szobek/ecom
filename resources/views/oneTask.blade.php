@@ -7,10 +7,11 @@
         </div>
         <div class="card-body">
             leírás: {{$task->description}}
+            <a href="/ticketsuccess/{{$task->id}}">késznek jelöl</a>
         </div>
         <div class="card-footer">
 
-            határidő: {{$task->border}}
+            határidő: {{$task->deadline}}
         </div>
     </div>
 
