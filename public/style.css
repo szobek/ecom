@@ -1,5 +1,9 @@
-label{
+.form-container label{
     padding-left: 10px;
     font-size: 1.2rem;
-    color: #718096;
+    color: #051b5f;
+}
+
+.form-container{
+    background-color: cadetblue;
 }

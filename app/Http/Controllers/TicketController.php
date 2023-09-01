@@ -17,7 +17,7 @@ class TicketController extends Controller
     {
         $this->dt = intval( date('H'));
         //dd($this->dt > $this->minh && $this->dt < $this->maxh);
-        if ($this->dt > $this->minh && $this->dt < $this->maxh) {
+        if ($this->dt >= $this->minh && $this->dt < $this->maxh) {
             $ticket = new Ticket();
             $ticket->name = $request->input('name');
             $ticket->description = $request->input('desc');
@@ -27,7 +27,7 @@ class TicketController extends Controller
             return redirect()->route('list');
 
         } else {
-            print '<h1 >Nem lehet most felvinni</h1><br>  <a href="/list">Tovább</a>';
+            print '<h1 >Nem lehet most felvinni (csak 8-17-ig. Most:'.$this->dt.') </h1><br>  <a href="/list">Tovább</a>';
         }
 
     }
