@@ -9,7 +9,21 @@ Route::get('/', function () {
 });
 
 Route::get('/create', function () {
-return view('create');
+$maxh = " 21:00";
+    $dayOfWeek = intval(date('w', strtotime(date('Y-m-d'))));
+
+    $endOfWeek = ($dayOfWeek < 5) ?
+        date('Y-m-d', strtotime("next friday", strtotime(date('Y-m-d')))) :
+        strtotime(date('Y-m-d ') . $maxh);
+
+    $now = strtotime(date('H:i'));
+
+    if ($now < $endOfWeek) {
+        return view('create');
+    } else {
+        print '<h1 >Nem lehet most felvinni (csak 8-17-ig. Most:' . date('H:i') . ') </h1><br>  <a href="/list">Tovább</a>';
+    }
+
 });
 
 Route::post('/create', 'App\Http\Controllers\TicketController@make');
