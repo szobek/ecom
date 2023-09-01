@@ -7,7 +7,9 @@
         </div>
         <div class="card-body">
             leírás: {{$task->description}}
+            @if($task->success==0)
             <a href="/ticketsuccess/{{$task->id}}">késznek jelöl</a>
+            @endif
         </div>
         <div class="card-footer">
 
