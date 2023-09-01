@@ -36,7 +36,12 @@ class TicketController extends Controller
     public function list()
     {
 
+        //a "másik" megoldás,attól függ mi kell mert több adat van benne
+//$datas = Ticket::where('success',0)->get();
+//dd($datas);
         $dt = date('H');
+
+        // az egyszerűbb változat
         $list = DB::table('tickets')->select('id', 'name', 'description', 'deadline')->where('success',0)->get();
         return view('list')->with(['list' => $list, 'dt' => $dt]);
 
