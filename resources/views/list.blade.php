@@ -4,9 +4,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-auto">
+        <div class="col-8">
 
-            <p>{{$dt}}</p>
+
             <h2 class="text-center">Tickets</h2>
 
 
