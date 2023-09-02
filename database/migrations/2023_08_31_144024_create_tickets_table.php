@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->dateTime('deadline')->nullable();
+            $table->string('deadline')->nullable();
             $table->boolean('success');
             $table->timestamps();
         });
