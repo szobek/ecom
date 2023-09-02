@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +10,6 @@ class TicketController extends Controller
 {
 
     private $dt;
-    private $minh = 8;
     private $maxh = " 19:00";
 
     private $endOfWeek;
@@ -27,7 +25,7 @@ class TicketController extends Controller
 
     }
 
-    public function make(Request $request)
+    public function make(Request $request) : string
     {
         $this->setDatesOfField();
         $ticket = new Ticket();
@@ -39,7 +37,7 @@ class TicketController extends Controller
         return redirect()->route('list');
 
     }
-public function listAllTicket(){
+public function listAllTicket():\Illuminate\View\View{
     $list = DB::table('tickets')->select('id', 'name', 'description', 'deadline','success')->get();
     return view('allTicketList')->with(['list' => $list]);
 
@@ -79,7 +77,6 @@ public function listAllTicket(){
     {
         $nextFriday = date('H:i', strtotime("today", strtotime(date('Y-m-d'))));
         $date = strtotime(date('Y-m-d ') . " 17:00");
-        dd($date);
         $this->dt = intval(date('H:i', strtotime('today')));
         $dayOfWeek = intval(date('w', strtotime(date('Y-m-d'))));
         if ($dayOfWeek < 5) {
@@ -96,7 +93,7 @@ public function listAllTicket(){
 
     }
 
-    public function ticketSetSuccess(int $id){
+    public function ticketSetSuccess(int $id) : string{
         DB::table('tickets')->where('id',$id)->update(["success"=>1]);
         return redirect()->route('list');
     }
