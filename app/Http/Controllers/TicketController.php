@@ -75,21 +75,23 @@ public function listAllTicket():\Illuminate\View\View{
 
     private function countDeadLine(int $hour)
     {
-        $nextFriday = date('H:i', strtotime("today", strtotime(date('Y-m-d'))));
-        $date = strtotime(date('Y-m-d ') . " 17:00");
-        $this->dt = intval(date('H:i', strtotime('today')));
-        $dayOfWeek = intval(date('w', strtotime(date('Y-m-d'))));
-        if ($dayOfWeek < 5) {
+        $this->now = intval(date('H:i', time()));// a mostani timestamp
+        $dayOfWeek = intval(date('w', strtotime(date('Y-m-d'))));// a hét hányadik napja
+        dd($this->now + $hour);
+        if ($dayOfWeek>0&&$dayOfWeek < 5) {
             $nextFriday = date('Y-m-d', strtotime("next friday", strtotime(date('Y-m-d'))));
-            if ($this->dt + $hour <= intval($nextFriday . "17")) {
+
+
+            if ($this->now + $hour <= intval($nextFriday . "17:00")) {
 
                 print "mehet";
             } else {
                 print "ezen a héten nem fér bele";
             }
         } else {
-            print "péntek van";
+            print "péntek vagy hétvége van";
         }
+        exit();
 
     }
 
